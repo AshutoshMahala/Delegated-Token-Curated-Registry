@@ -2,6 +2,9 @@ pragma solidity ^0.4.8;
 
 import "./PLCRVoting.sol";
 
+/**
+@dev This contract only adds the funtionality of delegate voting to the PLCRVoting contact.
+*/
 contract PLCRDelegateVoting is PLCRVoting{
 
     event _DelegatedVotingRightsGranted(uint numTokens, address indexed voter);
