@@ -1,0 +1,50 @@
+const HDWalletProvider = require('truffle-hdwallet-provider');
+const fs = require('fs');
+
+let mnemonic = '';
+
+if (fs.existsSync('secrets.json')) {
+  const secrets = JSON.parse(fs.readFileSync('secrets.json', 'utf8'));
+  ({ mnemonic } = secrets);
+}
+
+if (process.env.MNEMONIC) {
+  mnemonic = process.env.MNEMONIC;
+}
+
+module.exports = {
+  networks: {
+    mainnet: {
+      provider: () => new HDWalletProvider(mnemonic, 'https://mainnet.infura.io'),
+      network_id: '1',
+      gas: 4500000,
+      gasPrice: 10000000000,
+    },
+    ganache: {
+      provider: () => new HDWalletProvider(mnemonic, 'http://localhost:7545'),
+      network_id: '*',
+    },
+    rinkeby: {
+      provider: () => new HDWalletProvider(mnemonic, 'https://rinkeby.infura.io'),
+      network_id: '*',
+      gas: 4500000,
+      gasPrice: 25000000000,
+    },
+    ropsten: {
+      provider: () => new HDWalletProvider(mnemonic, 'https://ropsten.infura.io'),
+      network_id: '*',
+      gas: 4500000,
+      gasPrice: 25000000000,
+    },
+    // config for solidity-coverage
+    coverage: {
+      provider: () => new HDWalletProvider(mnemonic, 'http://localhost:7545'),
+      network_id: '*',
+      gas: 6000000,
+      gasPrice: 25000000000,
+    },
+  },
+};
+
+
+
