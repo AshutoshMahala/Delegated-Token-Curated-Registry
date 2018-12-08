@@ -1,5 +1,5 @@
 # Delegated-Token-Curated-Registry
-Token Curated Registry where delegate functionality has been added for commiting a vote.
+Token Curated Registry where delegate functionality has been added for commiting a vote. Where an owner of the tokens can provide right to someone vote on his behalf.
 
 ## Background
 ### ERC20
